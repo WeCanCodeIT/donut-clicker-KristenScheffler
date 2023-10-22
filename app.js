@@ -1,12 +1,15 @@
-const countdownTimer = document.getElementById("countdown-timer")
+const countTimer = document.getElementById("count-timer")
 let timeLeft = 0
 let autoClicker = 0
 
 function renderTime(){
-    countdownTimer.innerHTML = timeLeft
+    countTimer.innerHTML = timeLeft
 }
 
 setInterval(function (){
     renderTime()
     timeLeft = timeLeft + autoClicker
 }, 1000)
+
+
+
