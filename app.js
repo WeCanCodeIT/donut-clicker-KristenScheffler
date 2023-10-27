@@ -1,21 +1,9 @@
-const countTimer = document.getElementById("count-timer")
-let timeLeft = 0
-let autoClicker = 0
-
-function renderTime(){
-    countTimer.innerHTML = timeLeft
-}
-
-setInterval(function (){
-    renderTime()
-    timeLeft = timeLeft + autoClicker
-}, 1000)
-
 const donutCountDisplay = document.getElementById("donutCount");
 const autoClickerCountDisplay = document.getElementById("autoClickerCountButton");
 const autoClickerCostDisplay = document.getElementById("autoClickerCostButton");
 const clickButton = document.getElementById("clickButton");
 const buyAutoClickerButton = document.getElementById("buyAutoClickerButton");
+const activateAutoClickersButton = document.getElementById("activateAutoClickers");
 
 let donutCount = 0;
 let autoClickerCount = 0;
@@ -38,10 +26,10 @@ function updateAutoClickerCost() {
 function updateAutoClickerButtonState() {
     if (donutCount >= autoClickerCost) {
         buyAutoClickerButton.disabled = false;
-        buyAutoClickerButton.textContent = `Buy Auto-Clicker (${autoClickerCost} Donuts)`;
+        buyAutoClickerButton.textContent = `Buy Auto Clicker (${autoClickerCost} Donuts)`;
     } else {
         buyAutoClickerButton.disabled = true;
-        buyAutoClickerButton.textContent = `Buy Auto-Clicker (${autoClickerCost} Donuts)`;
+        buyAutoClickerButton.textContent = `Buy Auto Clicker (${autoClickerCost} Donuts)`;
     }
 }
 
@@ -57,6 +45,12 @@ function purchaseAutoClicker() {
     }
 }
 
+function activateAutoClickers() {
+    const clickRate = 1;
+    donutCount += autoClickerCount * clickRate;
+    updateDonutCount();
+}
+
 clickButton.addEventListener("click", () => {
     donutCount++;
     updateDonutCount();
@@ -65,10 +59,20 @@ clickButton.addEventListener("click", () => {
 
 buyAutoClickerButton.addEventListener("click", purchaseAutoClicker);
 
+activateAutoClickersButton.addEventListener("click", activateAutoClickers);
+
 updateAutoClickerButtonState();
 updateAutoClickerCost();
 updateDonutCount();
 
+setInterval(activateAutoClickers, 1000);
+
+function activateAutoClickers() {
+    const clickRate = 1;
+    donutCount += autoClickerCount * clickRate;
+    updateDonutCount();
+    console.log("Auto Clicker Count:", autoClickerCount);
+}
 
 
 
