@@ -11,5 +11,22 @@ setInterval(function (){
     timeLeft = timeLeft + autoClicker
 }, 1000)
 
+const donutCountDisplay = document.getElementById("donutCount");
+const clickButton = document.getElementById("clickButton");
+let donutCount = 0;
+
+
+function updateDonutCount() {
+    donutCountDisplay.textContent = donutCount;
+}
+
+clickButton.addEventListener("click", () => {
+    donutCount++;
+    updateDonutCount();
+});
+
+updateDonutCount();
+
+
 
 

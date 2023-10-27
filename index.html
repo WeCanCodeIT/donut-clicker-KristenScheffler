@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <header>
+        <h1>Donut Clicker</h1>
     <nav>
         <ul>
             <li><a href="#" onclick="showSection('fred')">Fred the Baker Baking Company</a></li>
@@ -17,16 +19,26 @@
             <li><a href="#" onclick="showSection('contact')">Contact info</a></li>
         </ul>
     </nav>
+    </header>
 
-    <section></section>
+    <div class="donutContainer">
+        <div class="donutCount">
+            <span id="donutCount">0</span> Donuts
+        </div>
+        <button id="clickButton">
+            <img src="images\donut photo.jpeg" alt="Picture of donut">
+            </button>
+    </div>
 
-    <button id="donutCounter">
-    <img src="images\donut photo.jpeg" alt="Picture of donut">
-    </button>
+    <button id="buyAutoClickerButton">Buy Auto Clicker (100 Donuts)</button>
 
-    <h1 id="count-timer">0</h1>
+    <button id="reset">Reset</button>
+
 
     <script src="app.js"></script>
+
+    <h2 id="count-timer">0</h2>
+
 </body>
 
 </html>
