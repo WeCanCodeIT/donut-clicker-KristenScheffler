@@ -12,41 +12,62 @@
 <body>
     <header>
         <h1>Donut Clicker</h1>
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showSection('fred')">Fred the Baker Baking Company</a></li>
-            <li><a href="#" onclick="showSection('inspiration')">The inspiration for Donut Clicker</a></li>
-            <li><a href="#" onclick="showSection('contact')">Contact info</a></li>
-        </ul>
-    </nav>
+        <h2>Fred the Baker Baking Company</h2>
+        <div>
+            <a href="https://orteil.dashnet.org/cookieclicker/" onclick="('inspiration')">The inspiration for Donut Clicker</a>
+        </div>
+        <div class="dropdown">
+            <a href="#">Company Information</a>
+            <div class="dropdown-content">
+                <p>Fred the Baker Baking Company has many items to choose from, not just baked goods! Crazy right? But it's true! We have apparel, cookware, kitchenware and much much more! Just check us out to see what we have that is perfect for you! </p>
+            </div>
+        </div>
+        <div class="dropdown">
+        <a href="#">Developer Information</a>
+        <div class="dropdown-content">
+            <p>Welcome! Click any link below to learn a bit more about the developer of this game:</p>
+            <ul>
+                <li><a href="#" id="developerBioLink">Quick Bio</a></li>
+                <li><a href="https://github.com/KristenScheffler" target="_blank">GitHub</a></li>
+                <li><a href="https://github.com/KristenScheffler/KristenScheffler.github.io" target="_blank">Portfolio</a></li>
+            </ul>
+        </div>
+    </div>
     </header>
 
-    <div class="donutContainer">
-        <div class="donutCount">
+    <div id="developerModal" class="modal">
+        <div class="modal-content">
+            <h2>Developer's Quick Bio</h2>
+            <p>Hi, I'm the developer of this game. I'm passionate about web development and creating fun applications. You can find more about my work on GitHub and my portfolio website.</p>
+            <a href="#" id="closeDeveloperModal">Close</a>
+        </div>
+    </div>
+
+    <div class="donut-container">
+        <div class="donut-count">
             <span id="donutCount">0</span> Donuts
         </div>
         <button id="clickButton">
             <img src="images\donut photo.jpeg" alt="Picture of donut">
-            </button>
+        </button>
     </div>
 
-    <div class="autoClickerContainer">
-        <div class="autoClickerCount">
-            Auto Clickers: <span id="autoClickerCountButton">0</span>
+    <div class="auto-clicker-container">
+        <div class="auot-clicker-count">
+            Auto Clickers: <span id="autoClickerCount">0</span>
         </div>
-        <button id="activateAutoClickers">Activate Auto Clickers</button>
-        <div class="autoClickerCost">
-            Cost of Auto Clicker: <span id="autoClickerCostButton">100</span> Donuts
+        <div class="auto-clicker-cost">
+            Cost of Auto Clicker: <span id="autoClickerCost">100</span> Donuts
         </div>
-        <button id="buyAutoClickerButton">Buy Auto Clicker (100 Donuts)</button>
+        <button id="buyAutoClickerButton">Buy Auto Clicker</button>
     </div>
 
-    <button id="reset">Reset</button>
+    <button id="resetButton">Reset</button>
 
 
     <script src="app.js"></script>
 
-    <h2 id="count-timer">0</h2>
+
 
 </body>
 

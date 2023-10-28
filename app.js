@@ -1,22 +1,34 @@
 const donutCountDisplay = document.getElementById("donutCount");
-const autoClickerCountDisplay = document.getElementById("autoClickerCountButton");
-const autoClickerCostDisplay = document.getElementById("autoClickerCostButton");
 const clickButton = document.getElementById("clickButton");
+const autoClickerCountDisplay = document.getElementById("autoClickerCount");
+const autoClickerCostDisplay = document.getElementById("autoClickerCost");
 const buyAutoClickerButton = document.getElementById("buyAutoClickerButton");
 const activateAutoClickersButton = document.getElementById("activateAutoClickers");
+const resetButton = document.getElementById("resetButton");
+
+function resetGame() {
+    autoClickerCount = 0;
+    autoClickerCost = 100;
+    donutCount = 0;
+    updateAutoClickerCount();
+    updateAutoClickerCost();
+    updateDonutCount();
+}
+
+resetButton.addEventListener("click", resetGame);
+
+const costIncreasePercentage = 10;
 
 let donutCount = 0;
 let autoClickerCount = 0;
 let autoClickerCost = 100;
-const costIncreasePercentage = 10;
-
 
 function updateDonutCount() {
     donutCountDisplay.textContent = donutCount;
 }
 
-function updateAutoClickerCount () {
-    autoClickerCostDisplay.textContent = autoClickerCost;
+function updateAutoClickerCount() {
+    autoClickerCountDisplay.textContent = autoClickerCount;
 }
 
 function updateAutoClickerCost() {
@@ -26,10 +38,10 @@ function updateAutoClickerCost() {
 function updateAutoClickerButtonState() {
     if (donutCount >= autoClickerCost) {
         buyAutoClickerButton.disabled = false;
-        buyAutoClickerButton.textContent = `Buy Auto Clicker (${autoClickerCost} Donuts)`;
+        buyAutoClickerButton.textContent = `Buy Auto-Clicker (${autoClickerCost} Donuts)`;
     } else {
         buyAutoClickerButton.disabled = true;
-        buyAutoClickerButton.textContent = `Buy Auto Clicker (${autoClickerCost} Donuts)`;
+        buyAutoClickerButton.textContent = `Not enough Donuts`;
     }
 }
 
@@ -37,7 +49,7 @@ function purchaseAutoClicker() {
     if (donutCount >= autoClickerCost) {
         donutCount -= autoClickerCost;
         autoClickerCount++;
-        autoClickerCost = Math.round(autoClickerCost * (1 + costIncreasePercentage / 100)); // Increase cost
+        autoClickerCost = Math.round(autoClickerCost * 1.1);
         updateDonutCount();
         updateAutoClickerCount();
         updateAutoClickerCost();
@@ -51,28 +63,23 @@ function activateAutoClickers() {
     updateDonutCount();
 }
 
+buyAutoClickerButton.addEventListener("click", purchaseAutoClicker);
+
 clickButton.addEventListener("click", () => {
     donutCount++;
     updateDonutCount();
     updateAutoClickerButtonState();
 });
 
-buyAutoClickerButton.addEventListener("click", purchaseAutoClicker);
-
-activateAutoClickersButton.addEventListener("click", activateAutoClickers);
-
-updateAutoClickerButtonState();
-updateAutoClickerCost();
-updateDonutCount();
-
 setInterval(activateAutoClickers, 1000);
 
-function activateAutoClickers() {
-    const clickRate = 1;
-    donutCount += autoClickerCount * clickRate;
-    updateDonutCount();
-    console.log("Auto Clicker Count:", autoClickerCount);
-}
+updateDonutCount();
+updateAutoClickerCount();
+updateAutoClickerCost();
+updateAutoClickerButtonState();
+
+
+
 
 
 
