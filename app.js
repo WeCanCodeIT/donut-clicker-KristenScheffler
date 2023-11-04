@@ -62,6 +62,7 @@ function activateAutoClickers() {
     const clickRate = 1;
     donutCount += autoClickerCount * clickRate;
     updateDonutCount();
+    updateAutoClickerButtonState();
 }
 
 buyAutoClickerButton.addEventListener("click", purchaseAutoClicker);
