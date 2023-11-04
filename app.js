@@ -13,6 +13,7 @@ function resetGame() {
     updateAutoClickerCount();
     updateAutoClickerCost();
     updateDonutCount();
+    updateAutoClickerButtonState();
 }
 
 resetButton.addEventListener("click", resetGame);
